@@ -38,4 +38,6 @@ public class MovieResult {
         this.data = data;
     }
 
+    public int getTotalResult(){return data.size();}
+
 }
