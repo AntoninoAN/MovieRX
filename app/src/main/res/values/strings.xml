@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MovieFinder</string>
+    <string name="tv_hint_search">search</string>
+</resources>
