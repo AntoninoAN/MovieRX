@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.sample.test.moviefinder.R;
-import com.sample.test.moviefinder.model.MovieResponse;
-import com.sample.test.moviefinder.model.MovieResult;
+import com.sample.test.moviefinder.model.Result;
 
 import java.util.List;
 
@@ -24,10 +23,10 @@ import butterknife.ButterKnife;
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MoviesHolder> {
 
-    List<MovieResponse> movieResponses;
+    List<Result> movieResponses;
     Context mContext;
 
-    public MovieListAdapter(List<MovieResponse> movieResults, Context mContext) {
+    public MovieListAdapter(List<Result> movieResults, Context mContext) {
         this.movieResponses = movieResults;
         this.mContext = mContext;
     }

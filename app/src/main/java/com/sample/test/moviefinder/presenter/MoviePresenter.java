@@ -5,7 +5,6 @@ import android.util.Log;
 import com.sample.test.moviefinder.api.HerokuAppApi;
 import com.sample.test.moviefinder.api.HerokuAppInterface;
 import com.sample.test.moviefinder.model.MovieResponse;
-import com.sample.test.moviefinder.model.MovieResult;
 import com.sample.test.moviefinder.view.MainViewInterface;
 
 import io.reactivex.Observable;
@@ -27,7 +26,7 @@ public class MoviePresenter implements MoviePresenterInterface{
 
     @Override
     public void getMovies() {
-
+        getObservable().subscribeWith(getObserver());
     }
 
     @Override
@@ -35,17 +34,17 @@ public class MoviePresenter implements MoviePresenterInterface{
 
     }
 
-    private Observable<MovieResult> getObservable(){
+    private Observable<MovieResponse> getObservable(){
         return HerokuAppApi.getRetrofit().create(HerokuAppInterface.class)
                 .getMovies()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    private DisposableObserver<MovieResult> getObserver(){
-        return new DisposableObserver<MovieResult>() {
+    private DisposableObserver<MovieResponse> getObserver(){
+        return new DisposableObserver<MovieResponse>() {
             @Override
-            public void onNext(MovieResult movieResult) {
+            public void onNext(MovieResponse movieResult) {
                 Log.d(TAG, "onNext: "+ movieResult.getTotalResult());
                 viewInterface.displayMovies(movieResult);
             }

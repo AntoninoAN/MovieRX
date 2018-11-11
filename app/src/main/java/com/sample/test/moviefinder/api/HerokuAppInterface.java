@@ -1,6 +1,6 @@
 package com.sample.test.moviefinder.api;
 
-import com.sample.test.moviefinder.model.MovieResult;
+import com.sample.test.moviefinder.model.MovieResponse;
 
 
 import io.reactivex.Observable;
@@ -11,6 +11,6 @@ import retrofit2.http.GET;
  */
 
 public interface HerokuAppInterface {
-    @GET()
-    Observable<MovieResult>getMovies();
+    @GET("api/movies/")
+    Observable<MovieResponse>getMovies();
 }
