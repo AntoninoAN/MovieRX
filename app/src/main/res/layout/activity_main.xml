@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_main_search"
+    <SearchView
+        android:id="@+id/main_search"
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:hint="@string/tv_hint_search"
-        />
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_rectangle_round_corners">
+
+        <EditText
+            android:id="@+id/tv_main_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:textSize="15sp"
+            />
+    </SearchView>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_main_movies"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
     <ProgressBar
         android:id="@+id/pb_fetch_cache"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 </LinearLayout>

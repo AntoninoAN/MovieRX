@@ -38,6 +38,6 @@ public class MovieResponse {
         this.data = data;
     }
 
-    public int getTotalResult(){return data.size();}
+    public int getTotalResult(){return data != null ? data.size() : 0;}
 
 }

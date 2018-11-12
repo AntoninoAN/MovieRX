@@ -10,4 +10,5 @@ import com.sample.test.moviefinder.model.MovieResponse;
 public interface MainViewInterface {
     void displayMovies(MovieResponse movieResponse);
     void showToast(String message);
+    void displayMoviesSearch(MovieResponse searchResponse);
 }
