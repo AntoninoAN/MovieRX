@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@drawable/bg_rectangle_round_corners">
+        android:background="@drawable/bg_rectangle_round_corners"
+        android:visibility="gone">
 
         <EditText
             android:id="@+id/tv_main_search"
@@ -23,7 +24,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_main_movies"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:padding="10dp"/>
 
     <ProgressBar
         android:id="@+id/pb_fetch_cache"

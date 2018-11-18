@@ -2,6 +2,7 @@ package com.sample.test.moviefinder.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import butterknife.ButterKnife;
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MoviesHolder>
 implements Filterable{
-
+    public final String TAG = MovieListAdapter.class.getSimpleName();
     List<Result> movieResponses;
     List<Result> movieResponsesFiltered;
     Context mContext;
@@ -49,6 +50,9 @@ implements Filterable{
 
     @Override
     public void onBindViewHolder(MoviesHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: "+movieResponsesFiltered.get(position).getPoster());
+        Log.d(TAG, "onBindViewHolder: "+movieResponsesFiltered.get(position).getTitle());
+        Log.d(TAG, "onBindViewHolder: "+movieResponsesFiltered.get(position).getYear());
         Glide.with(mContext).load(movieResponsesFiltered.get(position).getPoster()).into(holder.iv_movie_item);
         holder.tv_title_movie_item.setText(movieResponsesFiltered.get(position).getTitle());
         holder.tv_year_movie_item.setText(movieResponsesFiltered.get(position).getYear());

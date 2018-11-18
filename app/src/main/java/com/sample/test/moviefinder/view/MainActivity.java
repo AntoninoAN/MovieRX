@@ -1,6 +1,10 @@
 package com.sample.test.moviefinder.view;
 
+import android.app.Activity;
 import android.app.SearchManager;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,9 +21,12 @@ import android.widget.Toast;
 import com.sample.test.moviefinder.R;
 import com.sample.test.moviefinder.adapter.MovieListAdapter;
 import com.sample.test.moviefinder.model.MovieResponse;
+import com.sample.test.moviefinder.model.MovieViewModel;
+import com.sample.test.moviefinder.model.Result;
 import com.sample.test.moviefinder.presenter.MoviePresenter;
 
 import java.nio.file.FileAlreadyExistsException;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     MoviePresenter presenter;
     SearchView searchView;
 
-    CompositeDisposable disposable =  new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,28 +65,19 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setQueryHint("Search");
-        presenter.getResultsBasedOnQuery(searchView, this);
     }
 
     @Override
-    public void displayMovies(MovieResponse movieResponse) {
-        if(movieResponse!= null){
-            adapter = new MovieListAdapter(movieResponse.getData(), this);
+    public void displayMoviesCache(List<Result> listado) {
+        if(listado != null){
+            adapter = new MovieListAdapter(listado, this);
             rv_main_movies.setAdapter(adapter);
         }
     }
 
     @Override
-    public void showToast(String message) {
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void displayMoviesSearch(MovieResponse searchResponse) {
-        if(searchResponse!= null){
-            adapter = new MovieListAdapter(searchResponse.getData(), this);
-            rv_main_movies.setAdapter(adapter);
-        }
+    public MainActivity getActivity() {
+        return this;
     }
 
     private void linkPresenter(){
@@ -88,8 +85,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     }
 
     private void fetchMovies(){
-        //TODO get clock timer to fetch from cache??
         presenter.getMovies(this);
-        //presenter.getCache();;
     }
 }

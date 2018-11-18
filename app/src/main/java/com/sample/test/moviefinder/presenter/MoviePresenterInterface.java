@@ -10,5 +10,4 @@ import android.widget.SearchView;
 
 public interface MoviePresenterInterface {
     void getMovies(Context context);
-    void getResultsBasedOnQuery(SearchView searchView, Context context);
 }

@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textStyle="bold"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/iv_movie_item"
